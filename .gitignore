@@ -1,0 +1,21 @@
+# Node
+node_modules/
+dist/
+.env
+.env.local
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Database
+backend/foodlytics.db
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Static build
+frontend/dist/

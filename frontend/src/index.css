@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  :root {
+    /* Premium Dark Theme */
+    --bg-base: #0f0f23;
+    --text-base: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+  body {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+    background-attachment: fixed;
+    color: var(--text-base);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl shadow-xl shadow-black/20 
+           transition-all duration-300;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-400 hover:to-brand-500
+           text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200
+           shadow-lg shadow-brand-500/30 hover:scale-[1.02] active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10
+           font-medium py-3 px-6 rounded-xl transition-all duration-200;
+  }
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3
+           text-white placeholder-gray-500 
+           focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all duration-200;
+  }
+  .meal-badge {
+    @apply text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider;
+  }
+  .hero-bg {
+    @apply bg-gradient-to-br from-[#0f0f23] to-[#1a1a3e];
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-thumb { @apply bg-brand-500/50 rounded-full; }
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(249,115,22,0.2); }
+  50% { box-shadow: 0 0 40px rgba(249,115,22,0.4); }
+}
+.glow-pulse { animation: pulse-glow 2s ease-in-out infinite; }
