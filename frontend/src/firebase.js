@@ -2,7 +2,7 @@
 // Go to: Firebase Console → Project Settings → Your Apps → Web App → Config
 
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, setPersistence, browserSessionPersistence } from "firebase/auth";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -18,3 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+
+// Force Firebase to use Session Memory (forget the user when tab is closed)
+setPersistence(auth, browserSessionPersistence)
+  .catch((error) => console.error("Error setting persistence:", error));

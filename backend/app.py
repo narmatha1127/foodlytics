@@ -31,6 +31,14 @@ def create_app():
     with app.app_context():
         db.create_all()
 
+    @app.after_request
+    def add_security_headers(response):
+        """Prevent caching of API responses for security."""
+        response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+        return response
+
     return app
 
 if __name__ == "__main__":
